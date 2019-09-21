@@ -1,5 +1,3 @@
-import os
-import sys
 import argparse
 import itertools
 
@@ -10,16 +8,14 @@ def main():
 
   if args.word:
     mcmangle(args.word.lower())
-    sys.exit(0) 
-
-  if args.file:
+  elif args.file:
     try:
       f = open(args.file)
     except:
       print("couldn't read file")
 
     for line in f:
-        mcmangle(lower(line))
+        mcmangle(line.strip().lower())
   else:
     print("hi")
 
@@ -58,7 +54,7 @@ def run_rule_set(word, rule_set):
 
 
 def build_rules_combination(rules_root):
-  rules_root_combination = []
+  rules_root_combination = [()]
 
   for i in range(1, len(rules_root)+1):
     rules_root_combination = rules_root_combination + list(itertools.combinations(rules_root, i))
@@ -75,6 +71,7 @@ def build_rules_root(word):
   e_ct = 0
   o_ct = 0
 
+  #speaks https://hashcat.net/wiki/doku.php?id=rule_based_attack#using_p_nth_instance_of_a_character_with_positional_rules
   for letter in list(word):
     if letter == 'a':
       a_ct = a_ct + 1

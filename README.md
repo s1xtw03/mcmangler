@@ -6,6 +6,10 @@ It prints all possible combinations subsituting: a with @, i with 1, o with 0, s
 
 This is nice to load potential candidates for bruteforcing external services, ssh/ftp on internals, pretty much anything that doesn't have a failure-lockout. 
 
+You can provide a word with -w, or a newline separated file with -f.
+
+Warning: if you use phrases of words, output could get huge really quick. 
+
 ```
 jmcg@seles:~/util/s1xtw03/mcmangler$ python mcmangler.py -w Microsoft | sort -R | head  
 M1CR0S0FT2018!
@@ -19,7 +23,7 @@ micr0soft!123
 m1cro$oft!1
 micr0soft2019!
 jmcg@seles:~/util/s1xtw03/mcmangler$ python mcmangler.py -w Microsoft | wc -l          
-     585
+     624
 ```
 
-The old version used old-w-hashcat/rules-whole and old-w-hashcat/rules-root, processed with hashcat-utils/combipow to generate all the combinations. It also required [hashcat](https://github.com/hashcat/hashcat) and [hashcat-utils](https://github.com/hashcat/hashcat-utils), but those components are reimplemented in python now!!!!!
+The old version used old-w-hashcat/rules-whole and old-w-hashcat/rules-root, processed with [hashcat-utils](https://github.com/hashcat/hashcat-utils)/combipow to generate all the combinations, and then run through the [hashcat](https://github.com/hashcat/hashcat) rules engine. To address some of the shortcomings with that, the relevant functionality is reimplemented in python now!!
