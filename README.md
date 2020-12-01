@@ -2,9 +2,9 @@
 
 This service generates a list of leetspeak password candidates combined with common complex human appendages.
 
-It prints all possible combinations subsituting: a with @, i with 1, o with 0, s with $, and e with 3.  
+It prints all possible combinations substituting: a with @, i with 1, o with 0, s with $, and e with 3.  
 
-This is nice to load potential candidates for bruteforcing external services, ssh/ftp on internals, pretty much anything that doesn't have a failure-lockout. 
+This is nice to load potential candidates for bruteforcing network services during security assessment work - but beware the failure-lockout!. 
 
 You can provide a word with -w, or a newline separated file with -f.
 
